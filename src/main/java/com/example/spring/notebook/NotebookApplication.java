@@ -12,6 +12,5 @@ public class NotebookApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(NotebookApplication.class, args);
-        LOG.info("Hello Spring");
     }
 }
