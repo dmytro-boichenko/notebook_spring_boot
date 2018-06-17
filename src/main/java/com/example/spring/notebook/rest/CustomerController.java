@@ -4,6 +4,7 @@ import com.example.spring.notebook.model.Customer;
 import com.example.spring.notebook.service.CustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Collection;
 
@@ -17,6 +18,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customers")
+    @ResponseBody
     public Collection<Customer> getCustomers() {
         return service.getCustomers();
     }
