@@ -13,7 +13,7 @@ INSERT INTO notebook.Categories (CategoryName, Description)
 								('Dairy', 'Products	Cheeses'),
 								('Grains/Cereals',	'Breads, crackers, pasta, and cereal');
 						
-INSERT INTO notebook.Employees (LastName, FirstName, BirthDate, Photo, Notes) 
+INSERT INTO notebook.Employees (LastName, FirstName, BirthDate, Notes) 
 						VALUE ('Davolio',	'Nancy',	'1968-12-08',	'Education includes a BA in psychology from Colorado State University.
 																		She also completed (The Art of the Cold Call). Nancy is a member of 
 																		Toastmasters International'),
