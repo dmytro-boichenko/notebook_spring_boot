@@ -2,13 +2,13 @@ package com.example.spring.notebook.model;
 
 public class Customer {
 
-    private int id;;
+    private int id;
     private String name;
     private String contactName;
     private String address;
     private String city;
     private String postalCode;
-    private String country;;
+    private String country;
 
     public int getId() {
         return id;
@@ -65,4 +65,6 @@ public class Customer {
     public void setCountry(String country) {
         this.country = country;
     }
+
+
 }

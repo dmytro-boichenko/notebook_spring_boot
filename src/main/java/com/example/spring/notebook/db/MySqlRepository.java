@@ -12,6 +12,9 @@ public class MySqlRepository implements NotebookRepository {
 
     private static final String SELECT_CUSTOMERS = "SELECT * FROM Customers";
     private static final String SELECT_CATEGORIES = "SELECT * FROM Categories";
+    public String value;
+    private static final String INSERT_CUSTOMERS = "INSERT * INTO Customers(CustomerName, ContactName," +
+            " Address, City, PostalCode, Country) VALUE ";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -44,5 +47,23 @@ public class MySqlRepository implements NotebookRepository {
                     return categorie;
                 }) ;
         }
+
+    public void createCustomer(String name, String contactName, String address, String city,
+                               String postalCode, String country ){
+//        Customer customer = new Customer();
+//        customer.setId(0); // auto_increment
+//        customer.setName("Kate");
+//        customer.setContactName("Kate Sidorova");
+//        customer.setAddress("Alekseev str. 16");
+//        customer.setCity("Voroneg");
+//        customer.setPostalCode("365234");
+//        customer.setCountry("Russia");
+
+        value = "('"+name+"', '"+contactName+"', '"+address+"', '"+city+"', '"+postalCode+"', '"+
+                country+"')";
+        jdbcTemplate.update(INSERT_CUSTOMERS + value);
+
+
+    }
 
 }

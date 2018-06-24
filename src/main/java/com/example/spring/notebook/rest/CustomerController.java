@@ -21,7 +21,9 @@ public class CustomerController {
 
     @GetMapping
     @ResponseBody
+
     public Collection<Customer> getCustomers() {
+
         return service.getCustomers();
     }
 }
