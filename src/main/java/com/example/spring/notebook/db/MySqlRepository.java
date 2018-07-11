@@ -2,6 +2,7 @@ package com.example.spring.notebook.db;
 
 import com.example.spring.notebook.model.Categorie;
 import com.example.spring.notebook.model.Customer;
+import com.example.spring.notebook.model.Employee;
 import com.example.spring.notebook.model.Order;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -17,18 +18,24 @@ public class MySqlRepository implements NotebookRepository {
     private static final String SELECT_CUSTOMER_BY_ID_AND = "SELECT * FROM Customers WHERE customerid = ? or " +
             "customername = ? or contactname = ? or address = ? or city = ? or postalcode = ? or country = ?";
 
-    private static final String SELECT_ORDER_BY_CUSTOMERID = "SELECT * FROM Orders WHERE customerid = ?";
-    private static final String SELECT_ORDER = "SELECT * FROM Orders";
-
-    private static final String SELECT_CATEGORIES = "SELECT * FROM Categories";
-
-
     public String value;
     private static final String INSERT_CUSTOMERS = "INSERT INTO Customers (CustomerName, ContactName," +
             " Address, City, PostalCode, Country) VALUE ";
     private static final String UPDATE_CUSTOMERS = "UPDATE Customers SET CustomerId = ?, CustomerName = ?," +
             " ContactName = ?, Address = ?, City = ?, PostalCode = ?, Country = ? WHERE CustomerId = ?";
     private static final String DELETE_CUSTOMERS = "DELETE FROM Customers WHERE CustomerId = ?";
+
+    private static final String SELECT_EMPLOYEES = "SELECT * FROM Employees";
+    private static final String SELECT_EMPLOYEES_BY_ID = "SELECT * FROM Employees WHERE EmployeeId = ?";
+
+
+
+    private static final String SELECT_ORDER_BY_CUSTOMERID = "SELECT * FROM Orders WHERE customerid = ?";
+    private static final String SELECT_ORDER = "SELECT * FROM Orders";
+
+    private static final String SELECT_CATEGORIES = "SELECT * FROM Categories";
+
+
 
     private JdbcTemplate jdbcTemplate;
 
@@ -58,6 +65,17 @@ public class MySqlRepository implements NotebookRepository {
         return order;
     };
 
+    private RowMapper<Employee> EMPLOYEE_MAPPER = (resultSet, i) ->{
+        Employee employee = new Employee();
+        employee.setEmployeeId(resultSet.getInt("EMPLOYEEID"));
+        employee.setFirstName(resultSet.getString("FIRSTNAME"));
+        employee.setLastName(resultSet.getString("LASTNAME"));
+        employee.setBirthDate(resultSet.getDate("BIRTHDATE"));
+        employee.setNotes(resultSet.getString("NOTES"));
+
+        return employee;
+    };
+
 
     public Collection<Customer> getCustomers() {
         return jdbcTemplate.query(SELECT_CUSTOMERS, CUSTOMER_MAPPER);
@@ -85,7 +103,17 @@ public class MySqlRepository implements NotebookRepository {
                 address, city, postalCode, country};
 
         return jdbcTemplate.query(SELECT_CUSTOMER_BY_ID_AND, arguments, CUSTOMER_MAPPER);
+
     }
+
+    public Collection<Employee> getEmployees(){
+        return jdbcTemplate.query(SELECT_EMPLOYEES, EMPLOYEE_MAPPER);
+    }
+    public Employee getEmployee(int employeeId){
+        Object[] arguments = new Object[]{employeeId};
+        return jdbcTemplate.queryForObject(SELECT_EMPLOYEES_BY_ID, arguments, EMPLOYEE_MAPPER);
+    }
+
 
     public Collection<Categorie> getCategories() {
         return jdbcTemplate.query(SELECT_CATEGORIES,

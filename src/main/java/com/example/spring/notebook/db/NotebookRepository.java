@@ -2,6 +2,7 @@ package com.example.spring.notebook.db;
 
 import com.example.spring.notebook.model.Categorie;
 import com.example.spring.notebook.model.Customer;
+import com.example.spring.notebook.model.Employee;
 import com.example.spring.notebook.model.Order;
 
 import java.util.Collection;
@@ -17,6 +18,9 @@ public interface NotebookRepository {
 
     Collection<Customer> getCustomersPoisk(int id, String name, String contactName,
                                            String address, String city, String postalCode, String country);
+
+    Collection<Employee> getEmployees();
+    Employee getEmployee(int employeeId);
 
     Collection<Categorie> getCategories();
 

@@ -3,6 +3,7 @@ package com.example.spring.notebook.service;
 import com.example.spring.notebook.db.NotebookRepository;
 import com.example.spring.notebook.model.Customer;
 import com.example.spring.notebook.model.CustomerOrder;
+import com.example.spring.notebook.model.Employee;
 import com.example.spring.notebook.model.Order;
 import com.example.spring.notebook.request.CustomerRequest;
 import com.example.spring.notebook.request.PutCustomerRequest;
@@ -36,9 +37,17 @@ public class CustomerService {
     public CustomerOrder getCustomerOrders(int id){
         Customer customer = repository.getCustomer(id);
         Collection<Order> orders = repository.getOrders(id);
+        ArrayList<Employee> employeesList = new ArrayList<Employee>();
+
+        for(Order order : orders){
+            int employeeId = order.getEmployeeId();
+            Employee employee = repository.getEmployee(employeeId);
+            employeesList.add(employee);
+        }
         CustomerOrder customerOrder = new CustomerOrder();
         customerOrder.setCustomer(customer);
         customerOrder.setOrder(orders);
+        customerOrder.setEmployees(employeesList);
 
        // Collection<Object> list = new ArrayList<>();
         //list.add(customer);
