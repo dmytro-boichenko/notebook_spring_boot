@@ -37,22 +37,42 @@ public class CustomerService {
     public CustomerOrder getCustomerOrders(int id){
         Customer customer = repository.getCustomer(id);
         Collection<Order> orders = repository.getOrders(id);
-        ArrayList<Employee> employeesList = new ArrayList<Employee>();
+        ArrayList<Employee> employeesList = new ArrayList<>();
+        ArrayList<Order> or = new ArrayList<>();
 
         for(Order order : orders){
             int employeeId = order.getEmployeeId();
             Employee employee = repository.getEmployee(employeeId);
             employeesList.add(employee);
+            or.add(order);
+
         }
         CustomerOrder customerOrder = new CustomerOrder();
         customerOrder.setCustomer(customer);
-        customerOrder.setOrder(orders);
+        customerOrder.setOrder(or);
         customerOrder.setEmployees(employeesList);
-
-       
 
         return customerOrder;
 
+    }
+
+    public CustomerOrder getCustomerOrders(int id, int j) {
+        Customer customer = repository.getCustomer(id);
+        Collection<Order> orders = repository.getOrders(id);
+       ArrayList<Order> orderList = new ArrayList<>();
+
+        for (Order order : orders) {
+            int orderId = order.getOrderId();
+            if(orderId == j){
+                orderList.add(order);
+            }
+
+        }
+        CustomerOrder customerOrder = new CustomerOrder();
+        customerOrder.setCustomer(customer);
+        customerOrder.setOrder(orderList);
+
+        return customerOrder;
     }
 
     public Collection<Customer> getCustomersPoisk(PutCustomerRequest request){

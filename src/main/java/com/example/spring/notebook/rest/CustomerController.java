@@ -50,6 +50,12 @@ public class CustomerController {
         return service.getCustomerOrders(id);
     }
 
+    @GetMapping("/customerorders/{id},{orderId}")
+    @ResponseBody
+    public CustomerOrder getCustomerOrders(@PathVariable int id, @PathVariable int orderId){
+        return service.getCustomerOrders(id, orderId);
+    }
+
     @PutMapping("/poisk")
     @ResponseBody
     public Collection<Customer> getCustomersPoisk(@RequestBody PutCustomerRequest request){

@@ -6,8 +6,8 @@ import java.util.Collection;
 public class CustomerOrder {
 
    private Customer customer;
-   private Collection<Order> order;
-   private ArrayList<Employee> employees;
+   private ArrayList<Order> order = null;
+   private ArrayList<Employee> employees = null;
 
     public ArrayList<Employee> getEmployees() {
         return employees;
@@ -29,7 +29,7 @@ public class CustomerOrder {
         return order;
     }
 
-    public void setOrder(Collection<Order> order) {
+    public void setOrder(ArrayList<Order> order) {
         this.order = order;
     }
 }
