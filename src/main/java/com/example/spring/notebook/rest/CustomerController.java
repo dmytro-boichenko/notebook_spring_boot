@@ -1,6 +1,8 @@
 package com.example.spring.notebook.rest;
 
 import com.example.spring.notebook.model.Customer;
+import com.example.spring.notebook.model.CustomerOrder;
+import com.example.spring.notebook.model.Order;
 import com.example.spring.notebook.request.CustomerRequest;
 import com.example.spring.notebook.request.PutCustomerRequest;
 import com.example.spring.notebook.service.CustomerService;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 @RequestMapping("/customers")
@@ -33,6 +36,18 @@ public class CustomerController {
     public Customer getCustomer(@PathVariable int id) {
 
         return service.getCustomer(id);
+    }
+
+    @GetMapping("/customerorders")
+    @ResponseBody
+    public Collection<Order> getCustomerOrders(){
+        return service.getCustomerOrders();
+    }
+
+    @GetMapping("/customerorders/{id}")
+    @ResponseBody
+    public CustomerOrder getCustomerOrders(@PathVariable int id){
+        return service.getCustomerOrders(id);
     }
 
     @PutMapping("/poisk")

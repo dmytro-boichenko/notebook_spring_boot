@@ -2,12 +2,15 @@ package com.example.spring.notebook.service;
 
 import com.example.spring.notebook.db.NotebookRepository;
 import com.example.spring.notebook.model.Customer;
+import com.example.spring.notebook.model.CustomerOrder;
+import com.example.spring.notebook.model.Order;
 import com.example.spring.notebook.request.CustomerRequest;
 import com.example.spring.notebook.request.PutCustomerRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class CustomerService {
@@ -24,6 +27,25 @@ public class CustomerService {
 
     public Customer getCustomer(int id) {
         return repository.getCustomer(id);
+    }
+
+    public Collection<Order> getCustomerOrders(){
+        return repository.getOrders();
+    }
+
+    public CustomerOrder getCustomerOrders(int id){
+        Customer customer = repository.getCustomer(id);
+        Collection<Order> orders = repository.getOrders(id);
+        CustomerOrder customerOrder = new CustomerOrder();
+        customerOrder.setCustomer(customer);
+        customerOrder.setOrder(orders);
+
+       // Collection<Object> list = new ArrayList<>();
+        //list.add(customer);
+        //list.add(orders);
+
+        return customerOrder;
+
     }
 
     public Collection<Customer> getCustomersPoisk(PutCustomerRequest request){
