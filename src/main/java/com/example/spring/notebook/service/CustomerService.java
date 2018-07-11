@@ -49,9 +49,7 @@ public class CustomerService {
         customerOrder.setOrder(orders);
         customerOrder.setEmployees(employeesList);
 
-       // Collection<Object> list = new ArrayList<>();
-        //list.add(customer);
-        //list.add(orders);
+       
 
         return customerOrder;
 
