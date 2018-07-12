@@ -40,25 +40,25 @@ public class CustomerController {
 
     @GetMapping("/customerorders")
     @ResponseBody
-    public Collection<Order> getCustomerOrders(){
+    public Collection<Order> getCustomerOrders() {
         return service.getCustomerOrders();
     }
 
     @GetMapping("/customerorders/{id}")
     @ResponseBody
-    public CustomerOrder getCustomerOrders(@PathVariable int id){
+    public CustomerOrder getCustomerOrders(@PathVariable int id) {
         return service.getCustomerOrders(id);
     }
 
     @GetMapping("/customerorders/{id},{orderId}")
     @ResponseBody
-    public CustomerOrder getCustomerOrders(@PathVariable int id, @PathVariable int orderId){
+    public CustomerOrder getCustomerOrders(@PathVariable int id, @PathVariable int orderId) {
         return service.getCustomerOrders(id, orderId);
     }
 
     @PutMapping("/poisk")
     @ResponseBody
-    public Collection<Customer> getCustomersPoisk(@RequestBody PutCustomerRequest request){
+    public Collection<Customer> getCustomersPoisk(@RequestBody PutCustomerRequest request) {
         return service.getCustomersPoisk(request);
     }
     //@RequestBody PutCustomerRequest request
@@ -78,7 +78,7 @@ public class CustomerController {
 
     @GetMapping("/city")
     @ResponseBody
-    public ArrayList<String> getCustomersCity() {
+    public List<String> getCustomersCity() {
         return service.getCustomersCity();
     }
 
@@ -110,15 +110,17 @@ public class CustomerController {
 
         return "Updating successfully finished";
     }
- @DeleteMapping("/delete/{id}")
- @ResponseBody
-    public String deleteCustomer(@PathVariable int id){
+
+    @DeleteMapping("/delete/{id}")
+    @ResponseBody
+    public String deleteCustomer(@PathVariable int id) {
         service.deleteCustomer(id);
         return "Delete successfully finished";
     }
+
     @GetMapping("/hai")
     @ResponseBody
-    public String hai(){
+    public String hai() {
         return "fkjbndjkhne;kjnkr";
     }
 

@@ -1,8 +1,5 @@
 package com.example.spring.notebook.request;
 
-import javax.validation.constraints.*;
-
-
 public class PutCustomerRequest {
     private int id;
     private String name;

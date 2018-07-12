@@ -30,40 +30,37 @@ public class CustomerService {
         return repository.getCustomer(id);
     }
 
-    public Collection<Order> getCustomerOrders(){
+    public Collection<Order> getCustomerOrders() {
         return repository.getOrders();
     }
 
-    public CustomerOrder getCustomerOrders(int id){
+    public CustomerOrder getCustomerOrders(int id) {
         Customer customer = repository.getCustomer(id);
         Collection<Order> orders = repository.getOrders(id);
-        ArrayList<Employee> employeesList = new ArrayList<>();
-        ArrayList<Order> or = new ArrayList<>();
+        List<Employee> employeesList = new ArrayList<>();
 
-        for(Order order : orders){
+        for (Order order : orders) {
             int employeeId = order.getEmployeeId();
             Employee employee = repository.getEmployee(employeeId);
             employeesList.add(employee);
-            or.add(order);
-
         }
+
         CustomerOrder customerOrder = new CustomerOrder();
         customerOrder.setCustomer(customer);
-        customerOrder.setOrder(or);
+        customerOrder.setOrder(orders);
         customerOrder.setEmployees(employeesList);
 
         return customerOrder;
-
     }
 
     public CustomerOrder getCustomerOrders(int id, int j) {
         Customer customer = repository.getCustomer(id);
         Collection<Order> orders = repository.getOrders(id);
-       ArrayList<Order> orderList = new ArrayList<>();
+        ArrayList<Order> orderList = new ArrayList<>();
 
         for (Order order : orders) {
             int orderId = order.getOrderId();
-            if(orderId == j){
+            if (orderId == j) {
                 orderList.add(order);
             }
 
@@ -75,7 +72,7 @@ public class CustomerService {
         return customerOrder;
     }
 
-    public Collection<Customer> getCustomersPoisk(PutCustomerRequest request){
+    public Collection<Customer> getCustomersPoisk(PutCustomerRequest request) {
         return repository.getCustomersPoisk(request.getId(), request.getName(), request.getContactName(), request.getAddress(),
                 request.getCity(), request.getPostalCode(), request.getCountry());
     }
@@ -89,8 +86,8 @@ public class CustomerService {
         return customersName;
     }
 
-    public ArrayList<String> getCustomersCity() {
-        ArrayList<String> customerCity = new ArrayList<String>();
+    public List<String> getCustomersCity() {
+        List<String> customerCity = new ArrayList<>();
         for (Customer customer : repository.getCustomers()) {
             customerCity.add(customer.getCity());
         }
@@ -98,7 +95,7 @@ public class CustomerService {
     }
 
     public ArrayList<Integer> getCustomersId() {
-        ArrayList<Integer> customersId = new ArrayList<Integer>();
+        ArrayList<Integer> customersId = new ArrayList<>();
         for (Customer customer : repository.getCustomers()) {
             customersId.add(customer.getId());
         }
@@ -115,7 +112,7 @@ public class CustomerService {
                 request.getCity(), request.getPostalCode(), request.getCountry());
     }
 
-    public void deleteCustomer(int id){
+    public void deleteCustomer(int id) {
         repository.deleteCustomer(id);
     }
 

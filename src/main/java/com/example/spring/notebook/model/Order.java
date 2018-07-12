@@ -1,11 +1,9 @@
 package com.example.spring.notebook.model;
 
-import com.mysql.fabric.xmlrpc.base.Data;
-import sun.util.calendar.LocalGregorianCalendar;
-
 import java.util.Date;
 
 public class Order {
+
     private int orderId;
     private int customerId;
     private int employeeId;

@@ -18,7 +18,6 @@ public class MySqlRepository implements NotebookRepository {
     private static final String SELECT_CUSTOMER_BY_ID_AND = "SELECT * FROM Customers WHERE customerid = ? or " +
             "customername = ? or contactname = ? or address = ? or city = ? or postalcode = ? or country = ?";
 
-    public String value;
     private static final String INSERT_CUSTOMERS = "INSERT INTO Customers (CustomerName, ContactName," +
             " Address, City, PostalCode, Country) VALUE ";
     private static final String UPDATE_CUSTOMERS = "UPDATE Customers SET CustomerId = ?, CustomerName = ?," +
@@ -28,14 +27,12 @@ public class MySqlRepository implements NotebookRepository {
     private static final String SELECT_EMPLOYEES = "SELECT * FROM Employees";
     private static final String SELECT_EMPLOYEES_BY_ID = "SELECT * FROM Employees WHERE EmployeeId = ?";
 
-
-
     private static final String SELECT_ORDER_BY_CUSTOMERID = "SELECT * FROM Orders WHERE customerid = ?";
     private static final String SELECT_ORDER = "SELECT * FROM Orders";
 
     private static final String SELECT_CATEGORIES = "SELECT * FROM Categories";
 
-
+    private String value;
 
     private JdbcTemplate jdbcTemplate;
 
