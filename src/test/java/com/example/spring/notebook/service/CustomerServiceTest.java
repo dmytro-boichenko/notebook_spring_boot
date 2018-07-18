@@ -26,6 +26,7 @@ public class CustomerServiceTest {
     private static final int CUSTOMER_ID = 123;
     private static final int ORDER_ID = 456;
     private static final int EMPLOYEE_ID = 789;
+    private static final int ID = 439;
 
     @Mock
     private
@@ -34,6 +35,24 @@ public class CustomerServiceTest {
     @InjectMocks
     private
     CustomerService service;
+
+    @Test
+    public void getCustomers(){
+        when(repository.getCustomers()).thenReturn(createCustomerCollection());
+        Collection<Customer> customers = service.getCustomers();
+        assertThat(customers, is(notNullValue()));
+
+    }
+
+
+
+    @Test
+    public void getCustomer(){
+        when(repository.getCustomer(anyInt())).thenReturn(createCustomer());
+        Customer customer = service.getCustomer(CUSTOMER_ID);
+        assertThat(customer, is(notNullValue()));
+        assertThat(customer.getId(), is(CUSTOMER_ID));
+    }
 
     @Test
     public void getCustomerOrders() {
@@ -79,5 +98,12 @@ public class CustomerServiceTest {
         Employee employee = new Employee();
         employee.setEmployeeId(EMPLOYEE_ID);
         return employee;
+    }
+
+    private Collection<Customer> createCustomerCollection(){
+        Customer customers = new Customer();
+        customers.setId(ID);
+
+        return Collections.singleton(customers);
     }
 }
