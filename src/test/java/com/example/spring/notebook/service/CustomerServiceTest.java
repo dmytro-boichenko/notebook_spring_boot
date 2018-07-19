@@ -41,10 +41,7 @@ public class CustomerServiceTest {
         when(repository.getCustomers()).thenReturn(createCustomerCollection());
         Collection<Customer> customers = service.getCustomers();
         assertThat(customers, is(notNullValue()));
-
     }
-
-
 
     @Test
     public void getCustomer(){
