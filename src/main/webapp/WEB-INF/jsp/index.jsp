@@ -1,27 +1,13 @@
-<!DOCTYPE html>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-
-    <!--
-	<spring:url value="/css/main.css" var="springCss" />
-	<link href="${springCss}" rel="stylesheet" />
-	 -->
-    <c:url value="/css/main.css" var="jstlCss" />
-    <link href="${jstlCss}" rel="stylesheet" />
-
+    <meta charset="UTF-8"/>
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
 </head>
 <body>
-
-<div class="container">
-
-    <div class="starter-template">
-        <h1>Spring Boot Web JSP Example</h1>
-        <h2>Message: ${message}</h2>
-    </div>
-
-</div>
+<h1>Welcome</h1>
+<h2>${message}</h2>
 
 </body>
 
