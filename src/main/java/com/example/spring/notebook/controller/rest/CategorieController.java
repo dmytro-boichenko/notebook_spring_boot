@@ -1,4 +1,4 @@
-package com.example.spring.notebook.rest;
+package com.example.spring.notebook.controller.rest;
 
 
 import com.example.spring.notebook.model.Categorie;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Collection;
 
 @Controller
-@RequestMapping("/categories")
+@RequestMapping("/rest/categories")
 public class CategorieController {
 
     private CategorieService service;

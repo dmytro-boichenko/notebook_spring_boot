@@ -1,10 +1,9 @@
-package com.example.spring.notebook.rest;
+package com.example.spring.notebook.controller.web;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
@@ -16,8 +15,10 @@ public class WelcomeController {
     private String message = "Hello World";
 
     @GetMapping(value = {"/", "/welcome"})
-    public String welcome(Map<String, Object> model) {
+    public String checkRequest(Map<String, Object> model,
+                               @RequestParam(defaultValue = "privet kak dela?") String test) {
         model.put("message", this.message);
+        model.put("test_param", test);
         return "index";
     }
 

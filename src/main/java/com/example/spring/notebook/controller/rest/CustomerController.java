@@ -1,4 +1,4 @@
-package com.example.spring.notebook.rest;
+package com.example.spring.notebook.controller.rest;
 
 import com.example.spring.notebook.model.Customer;
 import com.example.spring.notebook.model.CustomerOrder;
@@ -16,7 +16,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Controller
-@RequestMapping("/customers")
+@RequestMapping("/rest/customers")
 public class CustomerController {
 
     private CustomerService service;
@@ -34,7 +34,6 @@ public class CustomerController {
     @GetMapping("/{id}")
     @ResponseBody
     public Customer getCustomer(@PathVariable int id) {
-
         return service.getCustomer(id);
     }
 
