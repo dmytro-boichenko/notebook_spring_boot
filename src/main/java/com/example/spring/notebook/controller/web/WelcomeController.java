@@ -19,7 +19,15 @@ public class WelcomeController {
                                @RequestParam(defaultValue = "privet kak dela?") String test) {
         model.put("message", this.message);
         model.put("test_param", test);
+        model.put("prob", "Privet, privet, privet!!!");
         return "index";
     }
 
+    @GetMapping(value = {"/customerById"})
+    public String getForm(Map<String, Object> model) {
+
+        model.put("par", "Param");
+
+        return "customerById";
+    }
 }
