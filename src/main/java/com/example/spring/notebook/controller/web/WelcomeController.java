@@ -30,4 +30,25 @@ public class WelcomeController {
 
         return "customerById";
     }
+
+    @GetMapping(value = {"/back", "/newcustomer"})
+    public String getNewCustomerForm(Map<String, Object> model){
+        model.put("newcustomer", "You can create new Customer");
+        return "newcustomer";
+    }
+    @GetMapping(value = {"/backdelete", "/deleteById"})
+    public String getDelete(Map<String, Object> model) {
+
+        model.put("del", "You can deleted Customer by his Id!");
+
+        return "deleteById";
+    }
+
+    @GetMapping(value = {"/backupdate", "/updateById"})
+    public String getUpdate(Map<String, Object> model) {
+
+        model.put("update", "You can update Customer by his Id!");
+
+        return "updateById";
+    }
 }
