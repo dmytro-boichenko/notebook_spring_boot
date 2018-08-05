@@ -25,7 +25,7 @@ public class CustomersController {
     @GetMapping
     public String getCustomers(Model model) {
         model.addAttribute("customers", customerService.getCustomers());
-        return "customers";
+        return "/jsp-customer/customers";
     }
     @GetMapping("/number")
 
@@ -33,7 +33,7 @@ public class CustomersController {
 
         model.addAttribute("customer", customerService.getCustomer(id));
 
-        return "customer";
+        return "/jsp-customer/customer";
     }
 
     @PostMapping("/newcustomer")
@@ -54,7 +54,7 @@ public class CustomersController {
         customerService.createCustomer(request);
 
         model.put("newcustomeradd", "New Customer seccfull created!!!!! ");
-        return "newcustomeradd";
+        return "/jsp-customer/newcustomeradd";
     }
 
     @PostMapping("/delete")
@@ -63,7 +63,7 @@ public class CustomersController {
 
         model.put("deletecustomer", "Customer with " + id + " deleted!!!");
 
-        return "deletecustomer";
+        return "/jsp-customer/deletecustomer";
     }
 
     @PostMapping("/update")
@@ -71,7 +71,7 @@ public class CustomersController {
 
            model.addAttribute("customer", customerService.getCustomer(a));
 
-            return "updateCustomer";
+            return "/jsp-customer/updateCustomer";
            }
 
     @PostMapping("/upd")
@@ -88,6 +88,20 @@ public class CustomersController {
 
         customerService.updateCustomer(request, id);
         model.put("updcustomer", "Update Customer seccfull !!!!! ");
-        return "updCustomer";
+        return "/jsp-customer/updCustomer";
     }
-}
+
+    @GetMapping("/historyCustomer")
+    public String getHistoryCustomer( Map<String, Object> mod, Model model,
+                                     @RequestParam("id") int id){
+//        int a = 0;
+//        String s = null;
+        //model.addAttribute("hh", s);
+        model.addAttribute("h", customerService.getHistoryCustomer(id));
+
+        mod.put("history", "You can see history customer heare!!!!! its id is:" + id);
+
+        return "/jsp-customer/historyCustomer";
+    }
+
+    }

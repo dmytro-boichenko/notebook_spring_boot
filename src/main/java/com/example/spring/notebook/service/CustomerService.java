@@ -1,16 +1,14 @@
 package com.example.spring.notebook.service;
 
 import com.example.spring.notebook.db.NotebookRepository;
-import com.example.spring.notebook.model.Customer;
-import com.example.spring.notebook.model.CustomerOrder;
-import com.example.spring.notebook.model.Employee;
-import com.example.spring.notebook.model.Order;
+import com.example.spring.notebook.model.*;
 import com.example.spring.notebook.request.CustomerRequest;
 import com.example.spring.notebook.request.PutCustomerRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -114,6 +112,12 @@ public class CustomerService {
 
     public void deleteCustomer(int id) {
         repository.deleteCustomer(id);
+    }
+
+    public Collection<HistoryCustomer> getHistoryCustomer(int id){
+
+        return repository.getHistoryCustomer(id);
+
     }
 
 }

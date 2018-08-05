@@ -1,16 +1,16 @@
 package com.example.spring.notebook.model;
 
 public class Categorie {
-    private int id;
+    private int categoryID;
     private String categorieName;
     private String description;
 
     public int getId() {
-        return id;
+        return categoryID;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.categoryID = id;
     }
 
     public String getCategorieName() {

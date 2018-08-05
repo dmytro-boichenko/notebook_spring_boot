@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class Order {
 
-    private int orderId;
-    private int customerId;
-    private int employeeId;
-    private Date orderDate;
-    private int shipperId;
+    private int orderId = 0;
+    private int customerId = 0;
+    private int employeeId = 0;
+    private Date orderDate = null;
+    private int shipperId = 0;
 
     public int getOrderId() {
         return orderId;

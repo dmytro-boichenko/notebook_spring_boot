@@ -7,7 +7,7 @@
 <head>
     <mete charset="UTF-8"/>
     <title>
-        Delete Customer
+        Update Customer
     </title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
 
@@ -16,13 +16,13 @@
 </head>
 <body>
 <center>
-    <h3>${del}</h3>
+    <h3>${updCustomer}</h3>
 </center>
 
 <hr>
 <center>
     <table width="780" border="0" cellspacing="0" cellpadding="0">
-        <form action="customers/delete" method="POST">
+        <form action="customers/update" method="POST">
 
             <table >
                 <tr>
@@ -31,14 +31,20 @@
                 </tr>
                 <tr>
                     <td>Enter number</td>
-                    <td><input type="submit" name="delete" value="Delete customer by Id"/></td>
+                    <td><input type="submit" name="update" value="Update customer by Id"/></td>
                 </tr>
+
             </table>
-
-
-
+            <hr>
+            <p>You enterd id customer: ${idNull}</p>
+            <p>label: ${updatecustomer}</p>
         </form>
-        <form action="/" method="GET">
+        <hr>
+
+
+        <hr>
+
+        <form action="/cust" method="GET">
             <table>
                 <tr>
                     <td>Вернуться к предидущей форме: </td>
@@ -48,6 +54,16 @@
         </form>
     </table>
     <hr>
+    <hr>
+    <form action="/welcome" method="GET">
+        <table>
+            <tr>
+                <td>Get to start page: </td>
+                <td><input type="submit" name="backToStart" value="Back"></td>
+            </tr>
+        </table>
+    </form>
+
 </center>
 
 </body>

@@ -89,6 +89,16 @@
     <form action="/backupdate" method="GET">
         <input type="submit" name="back" value="Back">
     </form>
+    <hr>
+    <form action="/welcome" method="GET">
+        <table>
+            <tr>
+                <td>Get to start page: </td>
+                <td><input type="submit" name="backToStart" value="Back"></td>
+            </tr>
+        </table>
+    </form>
+
 </center>
 
 </body>

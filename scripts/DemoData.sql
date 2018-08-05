@@ -60,7 +60,7 @@ INSERT INTO notebook.Products (ProductName, SupplierID, CategoryID, Unit, Price)
 					
 INSERT INTO notebook.Orders (CustomerID, EmployeeID,	OrderDate, ShipperID) 
 					VALUES (4,	2,	'1996-07-04',	3),
-							(3,	5,	'996-07-05',	1),
+							(3,	5,	'1996-07-05',	1),
 							(2,	4,	'1996-07-08',	2),
 							(5,	3,	'1996-07-08',	3),
 							(2,	1,	'1996-07-09',	2);

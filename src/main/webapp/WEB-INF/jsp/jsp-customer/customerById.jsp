@@ -37,6 +37,26 @@
 <div>
     <p>${par}</p>
 </div>
+<hr>
+<form action="/cust" method="GET">
+    <table>
+        <tr>
+            <td>Вернуться к предидущей форме: </td>
+            <td><input type="submit" name="backToCust" value="Back"></td>
+        </tr>
+    </table>
+</form>
+</table>
+<hr>
+<hr>
+<form action="/welcome" method="GET">
+    <table>
+        <tr>
+            <td>Get to start page: </td>
+            <td><input type="submit" name="backToStart" value="Back"></td>
+        </tr>
+    </table>
+</form>
 
 </body>
 

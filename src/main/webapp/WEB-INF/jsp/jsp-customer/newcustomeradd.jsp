@@ -7,21 +7,33 @@
 <head>
     <mete charset="UTF-8"/>
     <title>
-        Update Customer!!
+        New Customer ADD
     </title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
+
+
 
 </head>
 <body>
 <center>
-    <h3>${updcustomer}</h3>
-    <hr>
+    <h3>${newcustomeradd}</h3>
+</center>
 
-
-    <form action="/backupdate" method="GET">
+<hr>
+<center>
+    <form action="/back" method="GET">
         <input type="submit" name="back" value="Back">
     </form>
 </center>
+<hr>
+<form action="/welcome" method="GET">
+    <table>
+        <tr>
+            <td>Get to start page: </td>
+            <td><input type="submit" name="backToStart" value="Back"></td>
+        </tr>
+    </table>
+</form>
 
 </body>
 
