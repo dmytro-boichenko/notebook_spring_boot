@@ -10,8 +10,9 @@ public interface NotebookRepository {
 
     Customer getCustomer(int id);
 
-    Collection<Order> getOrders(int customerId);
+    Collection<Order> getOrders(int id);
     Collection<Order> getOrders();
+    Collection<Order> getOrderBy(Object[] args);
 
     Collection<Customer> getCustomersPoisk(int id, String name, String contactName,
                                            String address, String city, String postalCode, String country);

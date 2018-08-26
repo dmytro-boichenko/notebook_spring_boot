@@ -37,6 +37,8 @@ public class MySqlRepository implements NotebookRepository {
     private static final String SELECT_EMPLOYEES_BY_ID = "SELECT * FROM Employees WHERE EmployeeId = ?";
 
     private static final String SELECT_ORDER_BY_CUSTOMERID = "SELECT * FROM Orders WHERE customerid = ?";
+    private static final String SELECT_ORDER_BY = "SELECT * FROM Orders WHERE orderid = ? or customerID = ? " +
+            "or employeeid = ? or shipperid = ?";
     private static final String SELECT_ORDER = "SELECT * FROM Orders";
 
     private static final String SELECT_CATEGORIES = "SELECT * FROM Categories";
@@ -187,15 +189,7 @@ public class MySqlRepository implements NotebookRepository {
     }
 
 
-    public Collection<Order> getOrders(){
-        return jdbcTemplate.query(SELECT_ORDER, ORDER_MAPPER);
-    }
 
-    public Collection<Order> getOrders(int customerId){
-
-        Object[] arguments = new Object[]{customerId};
-        return jdbcTemplate.query(SELECT_ORDER_BY_CUSTOMERID, arguments, ORDER_MAPPER);
-    }
     public Collection<Customer> getCustomersPoisk(int id, String name, String contactName,
                                                   String address, String city, String postalCode, String country){
         Object[] arguments = new Object[]{id, name, contactName,
@@ -284,6 +278,22 @@ public class MySqlRepository implements NotebookRepository {
     public Collection<HistoryCustomer> getHistoryCustomer(int id){
         Object[] arguments = new Object[]{id};
         return jdbcTemplate.query(HISTORY_CUSTOMER, arguments, HISTORY_MAPPER);
+    }
+
+
+
+    public Collection<Order> getOrders(){
+        return jdbcTemplate.query(SELECT_ORDER, ORDER_MAPPER);
+    }
+
+    public Collection<Order> getOrders(int id){
+        Object[] arguments = new Object[]{id};
+        return jdbcTemplate.query(SELECT_ORDER_BY_CUSTOMERID, arguments, ORDER_MAPPER);
+    }
+    public Collection<Order> getOrderBy(Object[] arg){
+
+        Object[] arguments = arg;
+        return jdbcTemplate.query(SELECT_ORDER_BY, arguments, ORDER_MAPPER);
     }
 
 

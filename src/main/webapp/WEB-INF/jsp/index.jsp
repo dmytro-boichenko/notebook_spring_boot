@@ -18,6 +18,11 @@
     <input type="submit" name="customer" value="All about Customer"/>
 </form>
 <hr>
+<form action="/orders" method="GET">
+
+    <input type="submit" name="order" value="All about Order"/>
+</form>
+<hr>
 
 </body>
 
