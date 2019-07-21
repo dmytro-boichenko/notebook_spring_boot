@@ -23,6 +23,11 @@
     <input type="submit" name="order" value="All about Order"/>
 </form>
 <hr>
+<form action="/image" method="GET">
+
+    <input type="submit" name="img" value="Image"/>
+</form>
+<hr>
 
 </body>
 
